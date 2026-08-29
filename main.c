@@ -1,20 +1,19 @@
 #include <stdio.h>
 
-void f(void);
+void sub(void) {
+    int auto_count = 0;
+    static int static_count = 0;
 
-int i; // 전역 변수
+    auto_count++;
+    static_count++;
 
-int main(void) {
-    for (i = 0; i < 5; i++) {
-        f();
-    }
-    return 0;
+    printf("auto_count=%d, static_count=%d\n", auto_count, static_count);
 }
 
-void f(void) {
-    int i; // 지역 변수로 따로 선언하여 전역 변수 i와 값이 엉키는 무한 루프 문제 해결!
-    for (i = 0; i < 10; i++) {
-        printf("#");
+int main(void) {
+    int i;
+    for (i = 0; i < 3; i++) {
+        sub();
     }
-    printf("\n");
+    return 0;
 }
