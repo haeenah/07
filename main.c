@@ -1,19 +1,20 @@
 #include <stdio.h>
-#include <stdlib.h> // system() 함수를 위해 추가
 
-int inc(int counter) {
-    counter++;
-    return counter;
-}
+void f(void);
+
+int i; // 전역 변수
 
 int main(void) {
-    system("chcp 65001"); // 콘솔 한글 깨짐 방지
-
-    int i = 10;
-
-    printf("함수 호출전 i=%d\n", i);
-    inc(i);
-    printf("함수 호출후 i=%d\n", i);
-
+    for (i = 0; i < 5; i++) {
+        f();
+    }
     return 0;
+}
+
+void f(void) {
+    int i; // 지역 변수로 따로 선언하여 전역 변수 i와 값이 엉키는 무한 루프 문제 해결!
+    for (i = 0; i < 10; i++) {
+        printf("#");
+    }
+    printf("\n");
 }
