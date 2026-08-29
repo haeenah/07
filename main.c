@@ -1,19 +1,11 @@
 #include <stdio.h>
 
-void sub(void) {
-    int auto_count = 0;
-    static int static_count = 0;
+int all_files; // 전역 변수 선언
 
-    auto_count++;
-    static_count++;
-
-    printf("auto_count=%d, static_count=%d\n", auto_count, static_count);
-}
+extern void sub(void); // 다른 파일에 있는 함수 선언
 
 int main(void) {
-    int i;
-    for (i = 0; i < 3; i++) {
-        sub();
-    }
+    sub();
+    printf("%d\n", all_files);
     return 0;
 }
